@@ -11,7 +11,6 @@ class ViewModel:
     def __init__(self, model: Model, binding: BindingInterface) -> None:
         self.model = model
 
-        # self.on_update is called any time the view updates the binding.
         self.form_data_bind = binding.new_bind(self.model.form)
 
     def toggle_comments(self) -> None:
