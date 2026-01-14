@@ -4,6 +4,7 @@ from nova.mvvm.trame_binding import TrameBinding
 from nova.trame import ThemedApp
 from nova.trame.view.components import InputField
 from nova.trame.view.layouts import VBoxLayout
+from trame.widgets import client
 from trame.widgets import vuetify3 as vuetify
 
 from .model import Model
@@ -25,6 +26,12 @@ class App(ThemedApp):
 
     def create_ui(self) -> None:
         with super().create_ui() as layout:
+            # This instructs the user interface to reset itself to the most recent valid state when a browser connects
+            # to the tool or the browser is refreshed. This is not appropriate for all situations, so it is not a
+            # default behavior at this time. You can disable this line and then refresh your browser while the user
+            # interface is in an error state to see the difference between the two behaviors.
+            client.ClientTriggers(mounted=self.view_model.init_view)
+
             with layout.pre_content:
                 vuetify.VBanner(
                     "The form is in an error state.",

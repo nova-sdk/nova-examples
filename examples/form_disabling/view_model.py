@@ -47,7 +47,7 @@ class ViewModel:
         self.view_state_bind.update_in_view(self.view_state)
 
     def init_view(self) -> None:
-        self.view_state.has_errors = False
+        self.view_state.errors = []
 
         self.update_form_data()
         self.update_view_state()
