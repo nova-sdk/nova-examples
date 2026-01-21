@@ -1,13 +1,11 @@
 """View for file download example."""
 
 import os
-from typing import Optional
 
 from nova.mvvm.trame_binding import TrameBinding
 from nova.trame import ThemedApp
 from nova.trame.view.components import DataSelector
 from nova.trame.view.layouts import VBoxLayout
-from trame.widgets import client
 from trame.widgets import vuetify3 as vuetify
 
 from .model import Model
@@ -27,8 +25,6 @@ class App(ThemedApp):
         # is expensive, then you can defer it. In this case, you must handle the view state potentially being
         # uninitialized in the UI via v_if statements.
         self.view_model.update_form_data()
-
-        self._download: Optional[client.JSEval] = None
 
         self.create_ui()
 
