@@ -33,15 +33,11 @@ class App(ThemedApp):
 
         with super().create_ui() as layout:
             with layout.content:
-                with VBoxLayout(stretch=True):
+                with VBoxLayout(classes="mb-1", stretch=True):
                     # Please note that this is a dangerous operation. You should ensure that you restrict this
                     # component to only expose files that are strictly necessary to making your application
                     # functional.
-                    DataSelector(
-                        v_model="data.selected_files",
-                        directory=os.environ.get("HOME", "/"),
-                        classes="mb-1",
-                    )
+                    DataSelector(v_model="data.selected_files", directory=os.environ.get("HOME", "/"))
                 html.Span("You have selected {{ data.selected_files.length }} files.")
 
     def create_vm(self) -> None:

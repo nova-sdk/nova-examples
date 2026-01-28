@@ -31,14 +31,13 @@ class App(ThemedApp):
 
         with super().create_ui() as layout:
             with layout.content:
-                with VBoxLayout(stretch=True):
+                with VBoxLayout(classes="mb-1", stretch=True):
                     # Please note that this example will not work locally if /HFIR and /SNS don't exist on your
                     # development machine. You can either simulate or try to mount them depending on your
                     # circumstances.
                     NeutronDataSelector(
                         v_model="data.selected_files",
                         base_paths=["/HFIR", "/SNS"],
-                        classes="mb-1",
                         # You can uncomment the below lines to restrict data selection to a specific instrument.
                         # facility="SNS",
                         # instrument="TOPAZ",

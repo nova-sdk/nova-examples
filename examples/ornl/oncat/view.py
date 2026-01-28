@@ -31,7 +31,7 @@ class App(ThemedApp):
 
         with super().create_ui() as layout:
             with layout.content:
-                with VBoxLayout(stretch=True):
+                with VBoxLayout(classes="mb-1", stretch=True):
                     # You must set the ONCAT_CLIENT_ID and ONCAT_CLIENT_SECRET environment variables for this to
                     # work locally. If you don't know how to set them, then please visit https://oncat.ornl.gov/ and
                     # review the documentation or reach out to ONCat support for assistance. When this runs in
@@ -39,7 +39,6 @@ class App(ThemedApp):
                     NeutronDataSelector(
                         v_model="data.selected_files",
                         base_paths=["/HFIR", "/SNS"],
-                        classes="mb-1",
                         # This triggers the NeutronDataSelector to pull data from ONCat.
                         data_source="oncat",
                         # ONCat by default will return a large amount of metadata for each file. This can be
