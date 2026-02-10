@@ -16,8 +16,8 @@ platforms = ["linux-64", "osx-64"]
 [tool.pixi.pypi-dependencies]
 nova-examples = { path = ".", editable = true }
 nova-galaxy = "*"
-nova-mvvm = { path = "/Users/qid/Projects/nova-mvvm", editable = true }
-nova-trame = { path = "/Users/qid/Projects/nova-trame", editable = true }
+nova-mvvm = ">=0.16.1"
+nova-trame = ">=1.4.0"
 mypy = "*"
 pre-commit = ">=2.20.0"
 pytest = "*"

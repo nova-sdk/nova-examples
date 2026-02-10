@@ -29,7 +29,7 @@ class App(ThemedApp):
             with layout.pre_content:
                 vuetify.VBanner(
                     "The form is in an error state.",
-                    v_if="errors.data?.length > 0",
+                    v_if="data?.pydantic_errors?.length > 0",
                     color="error",
                     icon="mdi-close",
                 )
@@ -40,12 +40,12 @@ class App(ThemedApp):
                     InputField(v_model="data.wavelength")
                 with VBoxLayout(halign="center"):
                     vuetify.VBtn(
-                        "{{ errors.data?.length > 0 ? 'Errors Present' : 'No Errors' }}",
-                        disabled=("errors.data?.length > 0",),
+                        "{{ data?.pydantic_errors?.length > 0 ? 'Errors Present' : 'No Errors' }}",
+                        disabled=("data?.pydantic_errors?.length > 0",),
                     )
 
             with layout.post_content:
-                vuetify.VAlert("{{ errors.data }}", v_if="errors.data?.length > 0", color="error")
+                vuetify.VAlert("{{ data?.pydantic_errors }}", v_if="data?.pydantic_errors?.length > 0", color="error")
 
     def create_vm(self) -> None:
         binding = TrameBinding(self.state)
