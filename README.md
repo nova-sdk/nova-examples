@@ -14,12 +14,13 @@ This repository contains examples of how to build application functionalities in
 8. [Changing Pydantic rules based on user input](examples/dynamic_pydantic_rules)
 9. [Complex Pydantic rules](examples/complex_pydantic_rules)
 10. [Selecting datafiles from the server](examples/data_selector)
-11. [Running a Galaxy tool](examples/run_galaxy_tool)
-12. [Running a Galaxy workflow](examples/run_galaxy_workflow)
-13. [Working with Plotly](examples/plotly)
-14. [Working with Matplotlib](examples/matplotlib)
-15. [Working with VTK](examples/vtk)
-16. [Synchronizing changes between tabs](examples/multitab)
+11. [Downloading files to the user's computer](examples/downloading_files)
+12. [Running a Galaxy tool](examples/run_galaxy_tool)
+13. [Running a Galaxy workflow](examples/run_galaxy_workflow)
+14. [Working with Plotly](examples/plotly)
+15. [Working with Matplotlib](examples/matplotlib)
+16. [Working with VTK](examples/vtk)
+17. [Synchronizing changes between tabs](examples/multitab)
 
 We also provide examples that take advantage of ORNL resources:
 
