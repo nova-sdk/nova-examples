@@ -1,4 +1,4 @@
-"""View model implementation for dynamic Pydantic rules example."""
+"""View model implementation for form disabling example."""
 
 from nova.mvvm.interface import BindingInterface
 
@@ -6,7 +6,7 @@ from .model import Model
 
 
 class ViewModel:
-    """View model implementation for dynamic Pydantic rules example."""
+    """View model implementation for form disabling example."""
 
     def __init__(self, model: Model, binding: BindingInterface) -> None:
         self.model = model

@@ -16,8 +16,8 @@ platforms = ["linux-64", "osx-64"]
 [tool.pixi.pypi-dependencies]
 nova-examples = { path = ".", editable = true }
 nova-galaxy = "*"
-nova-mvvm = "*"
-nova-trame = "*"
+nova-mvvm = ">=0.16.1"
+nova-trame = ">=1.4.0"
 mypy = "*"
 pre-commit = ">=2.20.0"
 pytest = "*"

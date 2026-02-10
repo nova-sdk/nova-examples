@@ -14,7 +14,7 @@ class InputViewModel:
     def __init__(self, model: InputModel, binding: BindingInterface) -> None:
         self.model = model
 
-        # self.on_update is called any time the view updates the binding.
+        # self.update_stats is called any time the view updates the binding.
         self.inputs_bind = binding.new_bind(self.model.inputs, callback_after_update=self.update_stats)
 
         # To communicate changes in this view model to other view models, we can create an event.
