@@ -41,12 +41,11 @@ class App(ThemedApp):
                     DataSelector(
                         v_model="data.selected_files",
                         directory=os.environ.get("HOME", "/"),
-                        # Setting the action parameter adds a column with a button that triggers a callback that
+                        # Setting the action parameter adds a button for each file that triggers a callback that
                         # you've specified. This can be useful when you need to enable behavior per-file behavior
                         # beyond selection.
                         action=self.test,
-                        # You can customize this column with the following parameters.
-                        action_header="Edit (.py only)",
+                        # You can customize the button with the following parameters.
                         # https://pictogrammers.com/library/mdi/ for a list of available icons.
                         action_icon="mdi-pencil",
                         # By default, all rows will show the button. You can modify this with a JavaScript
