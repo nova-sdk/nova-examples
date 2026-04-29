@@ -50,7 +50,7 @@ class App(ThemedApp):
                         action_icon="mdi-pencil",
                         # By default, all rows will show the button. You can modify this with a JavaScript
                         # expression. item contains the dictionary that is sent to the action callback.
-                        action_visible=("item.path.endsWith('.py')",),
+                        action_visible=("item.path.endsWith('.h5')",),
                     )
                 html.Span("You have selected {{ data.selected_files.length }} files.")
 
