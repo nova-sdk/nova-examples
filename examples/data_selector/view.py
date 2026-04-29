@@ -1,6 +1,7 @@
 """View for data selector example."""
 
 import os
+from typing import Any, Dict
 
 from nova.mvvm.trame_binding import TrameBinding
 from nova.trame import ThemedApp
@@ -37,7 +38,20 @@ class App(ThemedApp):
                     # Please note that this is a dangerous operation. You should ensure that you restrict this
                     # component to only expose files that are strictly necessary to making your application
                     # functional.
-                    DataSelector(v_model="data.selected_files", directory=os.environ.get("HOME", "/"))
+                    DataSelector(
+                        v_model="data.selected_files",
+                        directory=os.environ.get("HOME", "/"),
+                        # Setting the action parameter adds a button for each file that triggers a callback that
+                        # you've specified. This can be useful when you need to enable behavior per-file behavior
+                        # beyond selection.
+                        action=self.test,
+                        # You can customize the button with the following parameters.
+                        # https://pictogrammers.com/library/mdi/ for a list of available icons.
+                        action_icon="mdi-pencil",
+                        # By default, all rows will show the button. You can modify this with a JavaScript
+                        # expression. item contains the dictionary that is sent to the action callback.
+                        action_visible=("item.path.endsWith('.h5')",),
+                    )
                 html.Span("You have selected {{ data.selected_files.length }} files.")
 
     def create_vm(self) -> None:
@@ -45,3 +59,6 @@ class App(ThemedApp):
 
         model = Model()
         self.view_model = ViewModel(model, binding)
+
+    def test(self, item: Dict[str, Any]) -> None:
+        print(f"Clicked action for {item}")

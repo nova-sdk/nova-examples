@@ -8,6 +8,7 @@ class ViewState(BaseModel):
     """Pydantic model for holding view state."""
 
     dialog_open: bool = Field(default=False)
+    persistent_dialog_open: bool = Field(default=False)
 
 
 class ViewModel:
@@ -20,4 +21,8 @@ class ViewModel:
 
     def open_dialog(self) -> None:
         self.view_state.dialog_open = True
+        self.view_state_bind.update_in_view(self.view_state)
+
+    def open_persistent_dialog(self) -> None:
+        self.view_state.persistent_dialog_open = True
         self.view_state_bind.update_in_view(self.view_state)
