@@ -14,25 +14,31 @@ This repository contains examples of how to build application functionalities in
     * `Conditions`
 5. [Conditionally disabling elements](examples/conditional_disabling)
     * `Conditions`
-6. [Creating a dialog](examples/dialog)
+6. [Disabling an element when the user interface has errors](examples/form_disabling)
+    * `Conditions` `Validation`
+7. [Creating a dialog](examples/dialog)
     * `Modals`
-7. [Changing Pydantic rules based on user input](examples/dynamic_pydantic_rules)
+8. [Creating a navigation drawer](examples/nav_drawer)
+    * `Modals`
+9. [Changing Pydantic rules based on user input](examples/dynamic_pydantic_rules)
     * `Validation`
-8. [Complex Pydantic rules](examples/complex_pydantic_rules)
+10. [Complex Pydantic rules](examples/complex_pydantic_rules)
     * `Computed Fields` `Validation`
-9. [Selecting datafiles from the server](examples/data_selector)
+11. [Selecting datafiles from the server](examples/data_selector)
     * `Remote Data`
-10. [Running a Galaxy tool](examples/run_galaxy_tool)
+12. [Downloading files to the user's computer](examples/downloading_files)
+    * `Remote Data`
+13. [Running a Galaxy tool](examples/run_galaxy_tool)
     * `Galaxy` `Asynchronous`
-11. [Running a Galaxy workflow](examples/run_galaxy_workflow)
+14. [Running a Galaxy workflow](examples/run_galaxy_workflow)
     * `Galaxy` `Asynchronous`
-12. [Working with Plotly](examples/plotly)
+15. [Working with Plotly](examples/plotly)
     * `Visualization` `Plotting`
-13. [Working with Matplotlib](examples/matplotlib)
+16. [Working with Matplotlib](examples/matplotlib)
     * `Visualization` `Plotting`
-14. [Working with VTK](examples/vtk)
+17. [Working with VTK](examples/vtk)
     * `Visualization` `Advanced Graphics`
-15. [Synchronizing changes between tabs](examples/multitab)
+18. [Synchronizing changes between tabs](examples/multitab)
     * `Events`
 
 We also provide examples that take advantage of ORNL resources:

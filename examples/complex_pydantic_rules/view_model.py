@@ -13,7 +13,7 @@ class ViewModel:
     def __init__(self, model: Model, binding: BindingInterface) -> None:
         self.model = model
 
-        # self.on_update is called any time the view updates the binding.
+        # self.send_cleaned_text_to_view is called any time the view updates the binding.
         self.form_data_bind = binding.new_bind(self.model.form, callback_after_update=self.send_cleaned_text_to_view)
 
     def send_cleaned_text_to_view(self, results: Dict[str, Any]) -> None:

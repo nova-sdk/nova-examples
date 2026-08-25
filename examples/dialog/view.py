@@ -2,6 +2,7 @@
 
 from nova.mvvm.trame_binding import TrameBinding
 from nova.trame import ThemedApp
+from nova.trame.view.components import PersistentDialog
 from nova.trame.view.layouts import VBoxLayout
 from trame.widgets import client
 from trame.widgets import vuetify3 as vuetify
@@ -24,8 +25,9 @@ class App(ThemedApp):
     def create_ui(self) -> None:
         with super().create_ui() as layout:
             with layout.content:
-                with VBoxLayout(halign="center", valign="center", stretch=True):
+                with VBoxLayout(gap="0.5em", halign="center", valign="center", stretch=True):
                     vuetify.VBtn("Open the Dialog", click=self.view_model.open_dialog)
+                    vuetify.VBtn("Open the Persistent Dialog", click=self.view_model.open_persistent_dialog)
 
                 # An important note about working with Trame is that it doesn't automatically listen to changes in
                 # Pydantic fields. While our InputField component handles this automatically, when you are using other
@@ -40,6 +42,18 @@ class App(ThemedApp):
                         with vuetify.VCard(classes="pa-4"):
                             vuetify.VCardTitle("Dialog")
                             vuetify.VCardSubtitle("Click anywhere outside of the dialog to dismiss.")
+
+                    # PersistentDialog will automatically set view_state.dialog_open to False when the user uses the
+                    # escape key but not when they click outside of the dialog.
+                    with PersistentDialog(
+                        v_model="view_state.persistent_dialog_open",
+                        # This is a default, but if you want to fully block closing the dialog you can set it to False.
+                        close_on_escape=True,
+                        width=400,
+                    ):
+                        with vuetify.VCard(classes="pa-4"):
+                            vuetify.VCardTitle("Dialog")
+                            vuetify.VCardSubtitle("Use the escape key to dismiss this dialog.")
 
     def create_vm(self) -> None:
         binding = TrameBinding(self.state)

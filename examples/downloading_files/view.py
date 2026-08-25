@@ -1,20 +1,19 @@
-"""View for data selector example."""
+"""View for file download example."""
 
 import os
-from typing import Any, Dict
 
 from nova.mvvm.trame_binding import TrameBinding
 from nova.trame import ThemedApp
 from nova.trame.view.components import DataSelector
 from nova.trame.view.layouts import VBoxLayout
-from trame.widgets import html
+from trame.widgets import vuetify3 as vuetify
 
 from .model import Model
 from .view_model import ViewModel
 
 
 class App(ThemedApp):
-    """View for data selector example."""
+    """View for file download example."""
 
     def __init__(self) -> None:
         super().__init__()
@@ -34,25 +33,18 @@ class App(ThemedApp):
 
         with super().create_ui() as layout:
             with layout.content:
-                with VBoxLayout(classes="mb-1", stretch=True):
+                with VBoxLayout(classes="mb-2", stretch=True):
                     # Please note that this is a dangerous operation. You should ensure that you restrict this
                     # component to only expose files that are strictly necessary to making your application
                     # functional.
                     DataSelector(
                         v_model="data.selected_files",
                         directory=os.environ.get("HOME", "/"),
-                        # Setting the action parameter adds a button for each file that triggers a callback that
-                        # you've specified. This can be useful when you need to enable behavior per-file behavior
-                        # beyond selection.
-                        action=self.test,
-                        # You can customize the button with the following parameters.
-                        # https://pictogrammers.com/library/mdi/ for a list of available icons.
-                        action_icon="mdi-pencil",
-                        # By default, all rows will show the button. You can modify this with a JavaScript
-                        # expression. item contains the dictionary that is sent to the action callback.
-                        action_visible=("item.path.endsWith('.h5')",),
+                        classes="mb-1",
                     )
-                html.Span("You have selected {{ data.selected_files.length }} files.")
+
+                with VBoxLayout(halign="center"):
+                    vuetify.VBtn("Download Selected Files", click=self.prepare_download)
 
     def create_vm(self) -> None:
         binding = TrameBinding(self.state)
@@ -60,5 +52,11 @@ class App(ThemedApp):
         model = Model()
         self.view_model = ViewModel(model, binding)
 
-    def test(self, item: Dict[str, Any]) -> None:
-        print(f"Clicked action for {item}")
+    async def prepare_download(self) -> None:
+        content = self.view_model.prepare_zip()
+        if content:
+            # See https://nova-application-development.readthedocs.io/projects/nova-trame/en/stable/api.html#nova.trame.ThemedApp.download_file
+            # for more information on the method.
+            # application/zip is the MIME type of the data to download. See https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types
+            # for further discussion and common types.
+            self.download_file("selected_files.zip", "application/zip", content)
